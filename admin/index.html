@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASPA Skills Training Program - Ghana</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Premium Branding & Custom Palette Styles */
+    :root {
+      --primary-blue: #0B5ED7;
+      --secondary-green: #198754;
+      --accent-gold: #FFC107;
+      --bg-light: #F8F9FA;
+      --text-dark: #212529;
+      --text-muted: #6C757D;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --hover-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation styling */
+    .navbar {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: var(--hover-transition);
+    }
+    .navbar-brand img {
+      max-height: 48px;
+    }
+    .nav-link {
+      font-weight: 500;
+      color: #333 !important;
+      position: relative;
+      transition: var(--hover-transition);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-blue) !important;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--secondary-green);
+      transition: var(--hover-transition);
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(11, 94, 215, 0.95) 0%, rgba(25, 135, 84, 0.9) 100%), 
+                  url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+      color: white;
+      padding: 140px 0 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--bg-light);
+      clip-path: polygon(0 100%, 100% 100%, 100% 0);
+    }
+
+    /* Card styling & Hover transformations */
+    .custom-card {
+      border: none;
+      border-radius: 16px;
+      background: white;
+      box-shadow: var(--card-shadow);
+      transition: var(--hover-transition);
+      overflow: hidden;
+    }
+    .custom-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Badges & Accents */
+    .badge-primary-custom {
+      background-color: rgba(11, 94, 215, 0.1);
+      color: var(--primary-blue);
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 30px;
+    }
+    .badge-secondary-custom {
+      background-color: rgba(25, 135, 84, 0.1);
+      color: var(--secondary-green);
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 30px;
+    }
+
+    /* Agri-Tech Interactive Dashboard Elements */
+    .agri-sensor-card {
+      background: #111e16;
+      color: #39FF14; /* Matrix neon green */
+      font-family: 'Courier New', monospace;
+      border: 1px solid #198754;
+      border-radius: 12px;
+    }
+    .sensor-reading {
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+
+    /* Float / WhatsApp Widgets */
+    .whatsapp-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      cursor: pointer;
+      transition: var(--hover-transition);
+    }
+    .whatsapp-widget:hover {
+      transform: scale(1.1);
+      color: white;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      z-index: 999;
+      background-color: var(--primary-blue);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+      transition: var(--hover-transition);
+      visibility: hidden;
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Tab views handling */
+    .page-tab {
+      display: none;
+    }
+    .page-tab.active-tab {
+      display: block;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lightbox Modal custom stylings */
+    .lightbox-modal .modal-content {
+      background-color: transparent;
+      border: none;
+    }
+    .lightbox-img {
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    /* Gallery overlay options */
+    .gallery-item {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 94, 215, 0.9);
+      opacity: 0;
+      transition: var(--hover-transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER NOTIFICATION -->
+  <div class="bg-dark text-white text-center py-2 px-3 small">
+    <span class="badge bg-warning text-dark me-2">Urgent Update</span>
+    Registration for Phase 3 of the NASPA Skills Training Program in partnership with Zeus Atlas is now officially <strong>OPEN</strong> for all National Service Personnel!
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#" onclick="switchTab('home')">
+        <div class="bg-primary text-white d-flex align-items-center justify-content-center rounded-3 me-2" style="width: 42px; height: 42px; font-weight: 800; font-size: 1.1rem;">
+          N
+        </div>
+        <div>
+          <span class="fw-bold tracking-tight text-primary d-block mb-0 lh-1" style="font-size: 1.1rem;">NASPA Ghana</span>
+          <small class="text-success fw-bold d-block" style="font-size: 0.75rem;">Skills Training Portal</small>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link px-3" id="nav-home" href="#" onclick="switchTab('home')">Home</a></li>
+          <li class="nav-item"><a class="nav-link px-3" id="nav-about" href="#" onclick="switchTab('about')">About Us</a></li>
+          <li class="nav-item"><a class="nav-link px-3" id="nav-courses" href="#" onclick="switchTab('courses')">Courses</a></li>
+          <li class="nav-item"><a class="nav-link px-3" id="nav-agritech" href="#" onclick="switchTab('agritech')">Agri-Tech</a></li>
+          <li class="nav-item"><a class="nav-link px-3" id="nav-gallery" href="#" onclick="switchTab('gallery')">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link px-3" id="nav-instructors" href="#" onclick="switchTab('instructors')">Facilitators</a></li>
+          <li class="nav-item"><a class="nav-link px-3" id="nav-contact" href="#" onclick="switchTab('contact')">Contact</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-outline-primary rounded-pill px-3 py-1.5 mt-2 mt-lg-0 me-2" id="nav-dashboard" href="#" onclick="switchTab('dashboard')">
+              <i class="fa-solid fa-chart-line me-1"></i> Admin Portal
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-success text-white rounded-pill px-4 py-2 mt-2 mt-lg-0" id="nav-register" href="#" onclick="switchTab('register')">
+              <i class="fa-solid fa-user-plus me-1"></i> Register Now
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================== TAB CONTENT SECTIONS ======================== -->
+
+  <!-- 1. HOME TAB -->
+  <div id="tab-home" class="page-tab active-tab">
+    <!-- Hero Section -->
+    <header class="hero-section">
+      <div class="container position-relative z-3">
+        <div class="row align-items-center">
+          <div class="col-lg-7 text-center text-lg-start mb-5 mb-lg-0">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3">NASPA GHANA &amp; ZEUS ATLAS INITIATIVE</span>
+            <h1 class="display-3 fw-extrabold text-white mb-3 lh-sm" style="font-weight: 800;">Empowering Ghanaian Youth with Dynamic Skills</h1>
+            <p class="lead text-white-50 fs-5 mb-4">Bridging the technology and job-readiness gap for Ghana's National Service Personnel. Access standard IT, Contemporary Agriculture, Project Management, Law, and Study Abroad opportunities.</p>
+            <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+              <a href="#" onclick="switchTab('register')" class="btn btn-warning text-dark btn-lg px-4 py-3 rounded-pill fw-bold shadow">
+                <i class="fa-solid fa-signature me-2"></i>Apply for Free Now
+              </a>
+              <a href="#" onclick="switchTab('courses')" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">
+                Explore Course Catalog
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="card bg-white border-0 p-4 rounded-4 shadow-lg text-dark">
+              <div class="text-center mb-3">
+                <span class="badge bg-danger text-white rounded-pill px-3 py-1.5 mb-2">Notice</span>
+                <h4 class="fw-bold mb-1">Registration Summary</h4>
+                <p class="text-muted small">Phase 3 Batch filling up quickly</p>
+              </div>
+              <div class="p-3 bg-light rounded-3 text-center mb-3">
+                <h3 class="text-primary fw-bold mb-0" id="live-count">14,248</h3>
+                <small class="text-uppercase fw-semibold text-muted" style="font-size: 0.75rem;">Ghanaian NSPs Enrolled This Year</small>
+              </div>
+              <div class="mb-3">
+                <div class="d-flex justify-content-between text-muted small mb-1">
+                  <span>Batch Capacity</span>
+                  <span class="fw-bold text-dark">85% Used</span>
+                </div>
+                <div class="progress" style="height: 10px;">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <button onclick="switchTab('register')" class="btn btn-primary w-full py-2.5 rounded-3 fw-bold">
+                <i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Secure Your Seat
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Partners Row -->
+    <section class="py-4 bg-white border-bottom">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-3 mb-3 mb-md-0 text-muted fw-bold">OFFICIAL PARTNERS</div>
+          <div class="col-6 col-md-3">
+            <div class="d-flex align-items-center justify-content-center p-2">
+              <i class="fa-solid fa-graduation-cap text-primary fa-2x me-2"></i>
+              <span class="fw-bold fs-5 text-dark text-start">NASPA<br><span class="text-muted small">GHANA</span></span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="d-flex align-items-center justify-content-center p-2">
+              <i class="fa-solid fa-bolt text-success fa-2x me-2"></i>
+              <span class="fw-bold fs-5 text-dark text-start">ZEUS ATLAS<br><span class="text-muted small">LIMITED</span></span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="d-flex align-items-center justify-content-center p-2">
+              <i class="fa-solid fa-building-columns text-warning fa-2x me-2"></i>
+              <span class="fw-bold fs-5 text-dark text-start">NSS GHANA<br><span class="text-muted small">SUPPORTED</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ghana Youth Unemployment Challenge Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-5">
+          <span class="badge-primary-custom mb-2">The Imperative Challenge</span>
+          <h2 class="fw-bold">Tackling Youth Unemployment with Modern Action</h2>
+          <p class="text-muted">Ghana's youth unemployment rate remains above 30%, which requires transforming how National Service Personnel transition to the permanent workforce. Technology and sustainable agriculture offer a proven path forward.</p>
+        </div>
+        <div class="row g-4 text-center">
+          <div class="col-md-4">
+            <div class="custom-card p-4 h-100">
+              <div class="bg-primary text-white d-inline-flex p-3 rounded-circle mb-3">
+                <i class="fa-solid fa-laptop-code fa-2x"></i>
+              </div>
+              <h4 class="fw-bold">Digital Literacy Disconnect</h4>
+              <p class="text-muted">Many graduates enter National Service lacking standard operational training in modern tech, project management, and specialized cloud or AI tools.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="custom-card p-4 h-100">
+              <div class="bg-success text-white d-inline-flex p-3 rounded-circle mb-3">
+                <i class="fa-solid fa-seedling fa-2x"></i>
+              </div>
+              <h4 class="fw-bold">The Agri-Business Frontier</h4>
+              <p class="text-muted">Contemporary agricultural methods are underutilized. Integrating technology with modern agriculture turns traditional farming into a high-profit career path for youth.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="custom-card p-4 h-100">
+              <div class="bg-warning text-dark d-inline-flex p-3 rounded-circle mb-3">
+                <i class="fa-solid fa-briefcase fa-2x"></i>
+              </div>
+              <h4 class="fw-bold">Career Infrastructure</h4>
+              <p class="text-muted">A lack of mentorship, foundational legal knowledge (employment rules), and modern project management techniques leaves promising graduates on the sidelines.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Highlights (Visual Stats) -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <span class="badge-secondary-custom mb-2">Actionable Solutions</span>
+            <h2 class="fw-bold mb-3">The Program Transforming Ghana's Young Professionals</h2>
+            <p class="text-muted mb-4">Through targeted collaboration between the National Service Personnel Association (NASPA) and industry experts at Zeus Atlas, the Program delivers certified, career-ready programs across Ghana.</p>
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="p-3 bg-light rounded-3">
+                  <h3 class="fw-bold text-primary mb-0">15+</h3>
+                  <small class="text-muted">Advanced Courses Available</small>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-3 bg-light rounded-3">
+                  <h3 class="fw-bold text-success mb-0">16</h3>
+                  <small class="text-muted">Ghanaian Regions Served</small>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-3 bg-light rounded-3">
+                  <h3 class="fw-bold text-warning mb-0">94%</h3>
+                  <small class="text-muted">Employment Rate Post-Program</small>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-3 bg-light rounded-3">
+                  <h3 class="fw-bold text-dark mb-0">100%</h3>
+                  <small class="text-muted">Free Sponsorship for NSPs</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="rounded-4 overflow-hidden shadow-lg position-relative">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" class="img-fluid w-full" alt="Group Training Session">
+              <div class="position-absolute bottom-0 start-0 right-0 bg-dark bg-opacity-75 p-4 text-white">
+                <h5 class="fw-bold mb-0">Inspiring Tomorrow's Leaders</h5>
+                <p class="small text-white-50 mb-0">Interactive session held with the leadership team of NASPA Greater Accra</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials section -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge bg-primary text-white rounded-pill px-3 py-1.5 mb-2">Testimonials</span>
+          <h2 class="fw-bold">Impact Stories From Past Participants</h2>
+          <p class="text-muted">Hear directly from National Service Personnel who secured jobs after training</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card border-0 p-4 rounded-4 shadow-sm bg-white h-100">
+              <div class="text-warning mb-3">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="fst-italic text-muted">"This course completely transformed my post-NSS outlook. The Contemporary Agriculture training showed me how to use drip irrigation. I am now managing an agri-tech startup."</p>
+              <div class="d-flex align-items-center mt-3">
+                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 48px; height: 48px;">
+                  KA
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0">Kwame Asante</h6>
+                  <small class="text-muted">Accra, Greater Accra</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 p-4 rounded-4 shadow-sm bg-white h-100">
+              <div class="text-warning mb-3">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="fst-italic text-muted">"The IT Fundamentals and Web Development pathway was incredible. My public-sector NSS hosting agency kept me on full-time due to the database systems I built for them."</p>
+              <div class="d-flex align-items-center mt-3">
+                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 48px; height: 48px;">
+                  AA
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0">Abena Adowaa</h6>
+                  <small class="text-muted">Kumasi, Ashanti Region</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 p-4 rounded-4 shadow-sm bg-white h-100">
+              <div class="text-warning mb-3">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="fst-italic text-muted">"Learning Agile Project Management helped me secure a scholarship for overseas graduate study. The Study Abroad Facilitation track saved me weeks of stress!"</p>
+              <div class="d-flex align-items-center mt-3">
+                <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 48px; height: 48px;">
+                  EO
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0">Emmanuel Osei</h6>
+                  <small class="text-muted">Takoradi, Western Region</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge bg-success text-white rounded-pill px-3 py-1.5 mb-2">FAQ</span>
+          <h2 class="fw-bold">Frequently Asked Questions</h2>
+          <p class="text-muted">Everything you need to know about eligibility, cost, and logistics</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="accordion" id="faqAccordion">
+              <div class="accordion-item border-0 shadow-sm mb-3 rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faqHeadingOne">
+                  <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+                    Who is eligible for this program?
+                  </button>
+                </h2>
+                <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-muted bg-light">
+                    All currently serving National Service Personnel (NSPs) across Ghana are fully eligible. Registration requires a valid Ghana National Service Authority (NSS) registration number.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item border-0 shadow-sm mb-3 rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faqHeadingTwo">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                    Are the courses completely free?
+                  </button>
+                </h2>
+                <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-muted bg-light">
+                    Yes. The training programs are fully sponsored through the partnership between NASPA Ghana and Zeus Atlas Limited. There are no fees for course materials, assessments, or certificate generation.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item border-0 shadow-sm mb-3 rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faqHeadingThree">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                    Will participants receive recognized certifications?
+                  </button>
+                </h2>
+                <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-muted bg-light">
+                    Absolutely. Upon successful completion of course requirements, practical activities, and assessments, participants receive an official Certificate of Competency verified by NASPA Ghana and Zeus Atlas.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 2. ABOUT US TAB -->
+  <div id="tab-about" class="page-tab">
+    <!-- Header Banner -->
+    <div class="bg-primary text-white text-center py-5">
+      <div class="container">
+        <h1 class="fw-bold mb-2">Our Vision, Mission, and Commitment</h1>
+        <p class="lead text-white-50">Providing Ghana's service graduates with competitive career and digital development pathways.</p>
+      </div>
+    </div>
+
+    <!-- Main About Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-6">
+            <span class="badge-primary-custom mb-2">Partnership Synergy</span>
+            <h2 class="fw-bold text-dark mb-4">NASPA Ghana &amp; Zeus Atlas Ltd</h2>
+            <p class="text-muted">The <strong>National Service Personnel Association (NASPA)</strong> is the official body representing over 100,000 service graduates across Ghana. In response to youth employment challenges, NASPA partnered with <strong>Zeus Atlas Limited</strong>—a leader in tech innovation, digital capacity development, and sustainable agriculture.</p>
+            <p class="text-muted">Together, our objective is to turn the mandatory service period into an incubation phase for tech innovators, smart farmers, and project leaders.</p>
+          </div>
+          <div class="col-lg-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm border-start border-primary border-5">
+              <h5 class="fw-bold text-primary mb-3">Core Strategic Focus Areas</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i> Elevating digital competency &amp; modern AI skills.</li>
+                <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i> Introducing precision agriculture and modernized agritech.</li>
+                <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i> Raising leadership, agility, and legal awareness.</li>
+                <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i> Creating direct pathways to overseas study and scholarship options.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 text-center mt-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="custom-card p-4 h-100">
+              <div class="bg-success text-white d-inline-flex p-3 rounded-circle mb-3">
+                <i class="fa-solid fa-bullseye fa-2x"></i>
+              </div>
+              <h5 class="fw-bold">Our Vision</h5>
+              <p class="text-muted small">To be Ghana's top professional transition program, turning thousands of graduates into industry-ready leaders yearly.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="custom-card p-4 h-100">
+              <div class="bg-primary text-white d-inline-flex p-3 rounded-circle mb-3">
+                <i class="fa-solid fa-rocket fa-2x"></i>
+              </div>
+              <h5 class="fw-bold">Our Mission</h5>
+              <p class="text-muted small">To deliver accessible, hands-on, industry-backed education covering technology, project logistics, and advanced agri-tech.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="custom-card p-4 h-100">
+              <div class="bg-warning text-dark d-inline-flex p-3 rounded-circle mb-3">
+                <i class="fa-solid fa-gavel fa-2x"></i>
+              </div>
+              <h5 class="fw-bold">The Law Project</h5>
+              <p class="text-muted small">Teaching young professionals constitutional rights, data privacy laws, and employment contract fundamentals.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="custom-card p-4 h-100">
+              <div class="bg-dark text-white d-inline-flex p-3 rounded-circle mb-3">
+                <i class="fa-solid fa-plane-departure fa-2x"></i>
+              </div>
+              <h5 class="fw-bold">Global Reach</h5>
+              <p class="text-muted small">Providing direct mentoring for top-tier foreign scholarships, applications, and visa guidelines.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Matters Chart Infographic Section -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge bg-danger text-white rounded-pill px-3 py-1.5 mb-2">The Numbers</span>
+          <h2 class="fw-bold">The Skills Gap in Perspective</h2>
+          <p class="text-muted">A representation of the mismatch in skills facing modern graduates</p>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="p-4 bg-light rounded-4">
+              <h5 class="fw-bold mb-3"><i class="fa-solid fa-triangle-exclamation text-danger me-2"></i> The Skill Deficit Issue</h5>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-1 text-muted small">
+                  <span>Graduates without Digital Core Competency</span>
+                  <span class="fw-bold text-dark">72%</span>
+                </div>
+                <div class="progress" style="height: 12px;">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-1 text-muted small">
+                  <span>Traditional Farming Yield Capacity Limit</span>
+                  <span class="fw-bold text-dark">40%</span>
+                </div>
+                <div class="progress" style="height: 12px;">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-1 text-muted small">
+                  <span>Required Enterprise Tech Familiarity (Employers' Side)</span>
+                  <span class="fw-bold text-dark">90%</span>
+                </div>
+                <div class="progress" style="height: 12px;">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="p-4 bg-primary text-white rounded-4 h-100">
+              <h4 class="fw-bold mb-3"><i class="fa-solid fa-graduation-cap me-2"></i> The Training Solution Impact</h4>
+              <p>Our program matches what employers need with what graduates know by teaching real-world skills:</p>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-3 d-flex align-items-start">
+                  <i class="fa-solid fa-circle-check text-warning fs-5 me-2 mt-1"></i>
+                  <span><strong>Actionable Tech Training:</strong> Practical labs focused on code, office tools, and AI workflows.</span>
+                </li>
+                <li class="mb-3 d-flex align-items-start">
+                  <i class="fa-solid fa-circle-check text-warning fs-5 me-2 mt-1"></i>
+                  <span><strong>Agri-Business Integration:</strong> Showing young graduates that modern farming is a profitable, tech-driven option.</span>
+                </li>
+                <li class="mb-0 d-flex align-items-start">
+                  <i class="fa-solid fa-circle-check text-warning fs-5 me-2 mt-1"></i>
+                  <span><strong>Legal Awareness:</strong> Explaining employment rights and cyber laws protects young professionals in the workplace.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 3. COURSES CATALOG TAB -->
+  <div id="tab-courses" class="page-tab">
+    <div class="bg-success text-white text-center py-5">
+      <div class="container">
+        <h1 class="fw-bold mb-2">Course Catalog &amp; Skill Pathways</h1>
+        <p class="lead text-white-50">Fully sponsored, certificate-backed, and optimized for modern careers.</p>
+      </div>
+    </div>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Course Card 1: IT Skills -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card h-100">
+              <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600" class="card-img-top" alt="IT Skills">
+                <span class="position-absolute top-0 end-0 bg-primary text-white px-3 py-1 m-3 rounded-pill small fw-bold">IT &amp; Tech</span>
+              </div>
+              <div class="card-body p-4">
+                <h4 class="fw-bold mb-2">Essential IT &amp; Tech Skills</h4>
+                <p class="text-muted small">Master digital operations, key productivity suites, responsive web design, and functional AI productivity frameworks.</p>
+                <hr>
+                <ul class="list-unstyled small text-muted mb-4">
+                  <li class="mb-2"><i class="fa-solid fa-clock text-primary me-2"></i><strong>Duration:</strong> 8 Weeks</li>
+                  <li class="mb-2"><i class="fa-solid fa-award text-success me-2"></i><strong>Certificate:</strong> Competency Certification</li>
+                  <li class="mb-2"><i class="fa-solid fa-layer-group text-warning me-2"></i><strong>Tracks:</strong> MS Office, AI, HTML/CSS/JS</li>
+                </ul>
+                <div class="d-grid">
+                  <a href="#" onclick="enrollCourse('Essential IT &amp; Tech Skills')" class="btn btn-outline-primary rounded-pill">Apply For This Course</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 2: Basic Laws -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card h-100">
+              <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=600" class="card-img-top" alt="Ghanaian Law">
+                <span class="position-absolute top-0 end-0 bg-dark text-white px-3 py-1 m-3 rounded-pill small fw-bold">Legal Studies</span>
+              </div>
+              <div class="card-body p-4">
+                <h4 class="fw-bold mb-2">Basic Laws of Ghana</h4>
+                <p class="text-muted small">Understand the legal structures, employment rights, contracts, and digital regulations that protect workers and businesses.</p>
+                <hr>
+                <ul class="list-unstyled small text-muted mb-4">
+                  <li class="mb-2"><i class="fa-solid fa-clock text-primary me-2"></i><strong>Duration:</strong> 4 Weeks</li>
+                  <li class="mb-2"><i class="fa-solid fa-award text-success me-2"></i><strong>Certificate:</strong> Law Literacy Certificate</li>
+                  <li class="mb-2"><i class="fa-solid fa-gavel text-warning me-2"></i><strong>Tracks:</strong> Constitution, Contracts, Cyber Laws</li>
+                </ul>
+                <div class="d-grid">
+                  <a href="#" onclick="enrollCourse('Basic Laws of Ghana')" class="btn btn-outline-primary rounded-pill">Apply For This Course</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 3: Project Management -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card h-100">
+              <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" class="card-img-top" alt="Project Management">
+                <span class="position-absolute top-0 end-0 bg-info text-white px-3 py-1 m-3 rounded-pill small fw-bold">Management</span>
+              </div>
+              <div class="card-body p-4">
+                <h4 class="fw-bold mb-2">Agile Project Management</h4>
+                <p class="text-muted small">Learn real-world management strategies, including Agile methodologies, project tracking, risk analysis, and team leadership.</p>
+                <hr>
+                <ul class="list-unstyled small text-muted mb-4">
+                  <li class="mb-2"><i class="fa-solid fa-clock text-primary me-2"></i><strong>Duration:</strong> 6 Weeks</li>
+                  <li class="mb-2"><i class="fa-solid fa-award text-success me-2"></i><strong>Certificate:</strong> Agile Associate Certificate</li>
+                  <li class="mb-2"><i class="fa-solid fa-list-check text-warning me-2"></i><strong>Tracks:</strong> Scrum, Monitoring &amp; Evaluation</li>
+                </ul>
+                <div class="d-grid">
+                  <a href="#" onclick="enrollCourse('Agile Project Management')" class="btn btn-outline-primary rounded-pill">Apply For This Course</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 4: Contemporary Agriculture -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card h-100">
+              <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=600" class="card-img-top" alt="Contemporary Agriculture">
+                <span class="position-absolute top-0 end-0 bg-success text-white px-3 py-1 m-3 rounded-pill small fw-bold">Agri-Business</span>
+              </div>
+              <div class="card-body p-4">
+                <h4 class="fw-bold mb-2">Contemporary Agriculture</h4>
+                <p class="text-muted small">Learn smart farming, modern greenhouses, drip irrigation technology, and sustainable agribusiness models for modern markets.</p>
+                <hr>
+                <ul class="list-unstyled small text-muted mb-4">
+                  <li class="mb-2"><i class="fa-solid fa-clock text-primary me-2"></i><strong>Duration:</strong> 8 Weeks</li>
+                  <li class="mb-2"><i class="fa-solid fa-award text-success me-2"></i><strong>Certificate:</strong> Smart Farmer Certificate</li>
+                  <li class="mb-2"><i class="fa-solid fa-wheat-awn text-warning me-2"></i><strong>Tracks:</strong> Hydroponics, Irrigation, Agribusiness</li>
+                </ul>
+                <div class="d-grid">
+                  <a href="#" onclick="enrollCourse('Contemporary Agriculture')" class="btn btn-outline-primary rounded-pill">Apply For This Course</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 5: Study Abroad Facilitation -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card h-100">
+              <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600" class="card-img-top" alt="Study Abroad">
+                <span class="position-absolute top-0 end-0 bg-warning text-dark px-3 py-1 m-3 rounded-pill small fw-bold">Global Studies</span>
+              </div>
+              <div class="card-body p-4">
+                <h4 class="fw-bold mb-2">Study Abroad Facilitation</h4>
+                <p class="text-muted small">Step-by-step guidance on international graduate scholarships, document verification, application techniques, and visa protocols.</p>
+                <hr>
+                <ul class="list-unstyled small text-muted mb-4">
+                  <li class="mb-2"><i class="fa-solid fa-clock text-primary me-2"></i><strong>Duration:</strong> 4 Weeks</li>
+                  <li class="mb-2"><i class="fa-solid fa-award text-success me-2"></i><strong>Certificate:</strong> Academic Planning Certificate</li>
+                  <li class="mb-2"><i class="fa-solid fa-passport text-warning me-2"></i><strong>Tracks:</strong> Scholarship Writing, Visas</li>
+                </ul>
+                <div class="d-grid">
+                  <a href="#" onclick="enrollCourse('Study Abroad Facilitation')" class="btn btn-outline-primary rounded-pill">Apply For This Course</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coming Soon Card -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card border-0 bg-dark text-white p-4 h-100 d-flex flex-column justify-content-between rounded-4 shadow-sm">
+              <div>
+                <span class="badge bg-warning text-dark mb-3">Expanding Program</span>
+                <h3 class="fw-bold">More Courses Coming Soon</h3>
+                <p class="text-white-50">Zeus Atlas is working on advanced modules, including Artificial Intelligence Applications, Renewable Energy Management, and Fintech Innovation, scheduled for release next quarter.</p>
+              </div>
+              <div class="border-top border-secondary pt-3">
+                <p class="mb-0 small text-warning"><i class="fa-solid fa-bell me-2"></i>Subscribers will receive early notifications.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 4. AGRI-TECH PORTAL TAB -->
+  <div id="tab-agritech" class="page-tab">
+    <div class="bg-dark text-white py-5 position-relative">
+      <div class="container position-relative z-3">
+        <span class="badge bg-success text-white px-3 py-1 rounded-pill mb-3">PREMIUM PORTAL</span>
+        <h1 class="fw-bold display-4">Agri-Tech &amp; Precision Farming</h1>
+        <p class="lead text-white-50">See how modern technology, IoT systems, and automated agricultural processes are shaping the future of farming in Ghana.</p>
+      </div>
+    </div>
+
+    <!-- Live Simulator Workspace -->
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">Interactive Agri-Tech Sensor Station</h2>
+          <p class="text-muted">Explore real-time data readings from our modern greenhouse installation in the Greater Accra Region.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="p-4 agri-sensor-card">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0"><i class="fa-solid fa-droplet text-info me-2"></i> Soil Moisture</h5>
+                <span class="badge bg-success">Optimal</span>
+              </div>
+              <div class="sensor-reading" id="sensor-moisture">48.2%</div>
+              <p class="text-white-50 small mt-2">Drip irrigation will activate if moisture levels drop below 35%.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="p-4 agri-sensor-card">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0"><i class="fa-solid fa-temperature-high text-danger me-2"></i> Ambient Temp</h5>
+                <span class="badge bg-warning text-dark">Monitored</span>
+              </div>
+              <div class="sensor-reading" id="sensor-temp">29.4°C</div>
+              <p class="text-white-50 small mt-2">Automatic misting triggers if temperatures rise above 32°C.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="p-4 agri-sensor-card">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0"><i class="fa-solid fa-seedling text-success me-2"></i> Nitrogen Level</h5>
+                <span class="badge bg-success">Healthy</span>
+              </div>
+              <div class="sensor-reading" id="sensor-nitrogen">142 ppm</div>
+              <p class="text-white-50 small mt-2">Current nitrogen levels match tomato crop guidelines perfectly.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Center for Sensors -->
+        <div class="text-center mb-5">
+          <button onclick="refreshSensors()" class="btn btn-success px-4 py-2.5 rounded-pill shadow-sm">
+            <i class="fa-solid fa-rotate me-2"></i>Update Live Sensor Feed
+          </button>
+        </div>
+
+        <!-- Smart Tech Explanations -->
+        <div class="row g-4 mt-2">
+          <div class="col-md-6 col-lg-4">
+            <div class="card custom-card h-100">
+              <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=600" class="card-img-top" alt="Smart Greenhouse">
+              <div class="card-body p-4">
+                <h5 class="fw-bold text-success"><i class="fa-solid fa-house-chimney-window me-2"></i>Hydroponic Glasshouses</h5>
+                <p class="text-muted small">Grow vegetables using nutrient-rich water solutions instead of soil, saving up to 90% more water than traditional farming methods.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card custom-card h-100">
+              <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&q=80&w=600" class="card-img-top" alt="Drone Analysis">
+              <div class="card-body p-4">
+                <h5 class="fw-bold text-success"><i class="fa-solid fa-helicopter me-2"></i>Agricultural Drone Mapping</h5>
+                <p class="text-muted small">Use multispectral drone cameras to assess crop health and locate pests before they can affect harvest yields.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card custom-card h-100">
+              <img src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600" class="card-img-top" alt="Agribusiness">
+              <div class="card-body p-4">
+                <h5 class="fw-bold text-success"><i class="fa-solid fa-wallet me-2"></i>High-Growth Agribusiness</h5>
+                <p class="text-muted small">Learn how to connect smart farms to active regional buyers, manage supply logistics, and package fresh produce for international export.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 5. GALLERY TAB -->
+  <div id="tab-gallery" class="page-tab">
+    <div class="bg-primary text-white text-center py-5">
+      <div class="container">
+        <h1 class="fw-bold mb-2">Our Experience Gallery</h1>
+        <p class="lead text-white-50">Take a look at our training programs, practical workshops, and field demonstrations across Ghana.</p>
+      </div>
+    </div>
+
+    <section class="py-5">
+      <div class="container">
+        <!-- Category Filter -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+          <button onclick="filterGallery('all')" class="btn btn-outline-primary active rounded-pill filter-btn">All Events</button>
+          <button onclick="filterGallery('tech')" class="btn btn-outline-primary rounded-pill filter-btn">IT &amp; Tech Labs</button>
+          <button onclick="filterGallery('agri')" class="btn btn-outline-primary rounded-pill filter-btn">Agri-Field Days</button>
+          <button onclick="filterGallery('grad')" class="btn btn-outline-primary rounded-pill filter-btn">Seminars</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="row g-4" id="gallery-grid">
+          
+          <div class="col-lg-4 col-md-6 gallery-card-item" data-category="tech">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600" class="img-fluid w-full" alt="IT Training Session">
+              <div class="gallery-overlay">
+                <h5 class="fw-bold">Practical IT Training</h5>
+                <p class="small mb-0">Hands-on coding workshop with service personnel</p>
+                <button onclick="openLightbox('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1200')" class="btn btn-light btn-sm mt-3"><i class="fa-solid fa-magnifying-glass-plus"></i> View Image</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 gallery-card-item" data-category="agri">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=600" class="img-fluid w-full" alt="Greenhouse Installation">
+              <div class="gallery-overlay">
+                <h5 class="fw-bold">Smart Greenhouse Demo</h5>
+                <p class="small mb-0">Learning precision drip systems in Greater Accra</p>
+                <button onclick="openLightbox('https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=1200')" class="btn btn-light btn-sm mt-3"><i class="fa-solid fa-magnifying-glass-plus"></i> View Image</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 gallery-card-item" data-category="grad">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600" class="img-fluid w-full" alt="Graduation Event">
+              <div class="gallery-overlay">
+                <h5 class="fw-bold">Orientation Assembly</h5>
+                <p class="small mb-0">Opening launch of the sponsored training partnership</p>
+                <button onclick="openLightbox('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200')" class="btn btn-light btn-sm mt-3"><i class="fa-solid fa-magnifying-glass-plus"></i> View Image</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 gallery-card-item" data-category="tech">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80&w=600" class="img-fluid w-full" alt="Collaborative Learning">
+              <div class="gallery-overlay">
+                <h5 class="fw-bold">Tech Lab Mentorship</h5>
+                <p class="small mb-0">One-on-one guide covering software fundamentals</p>
+                <button onclick="openLightbox('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80&w=1200')" class="btn btn-light btn-sm mt-3"><i class="fa-solid fa-magnifying-glass-plus"></i> View Image</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 gallery-card-item" data-category="agri">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600" class="img-fluid w-full" alt="Harvesting Demo">
+              <div class="gallery-overlay">
+                <h5 class="fw-bold">Crop Health Analysis</h5>
+                <p class="small mb-0">Evaluating harvest outputs with organic farm guidelines</p>
+                <button onclick="openLightbox('https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=1200')" class="btn btn-light btn-sm mt-3"><i class="fa-solid fa-magnifying-glass-plus"></i> View Image</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 gallery-card-item" data-category="grad">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=600" class="img-fluid w-full" alt="Honoring Graduates">
+              <div class="gallery-overlay">
+                <h5 class="fw-bold">Leadership Panel Discussion</h5>
+                <p class="small mb-0">NSP feedback session with Zeus Atlas team members</p>
+                <button onclick="openLightbox('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=1200')" class="btn btn-light btn-sm mt-3"><i class="fa-solid fa-magnifying-glass-plus"></i> View Image</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 6. INSTRUCTORS / FACILITATORS TAB -->
+  <div id="tab-instructors" class="page-tab">
+    <div class="bg-success text-white text-center py-5">
+      <div class="container">
+        <h1 class="fw-bold mb-2">Our Leading Facilitators</h1>
+        <p class="lead text-white-50">Learn from seasoned industry practitioners, tech innovators, and agronomists.</p>
+      </div>
+    </div>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card text-center p-4">
+              <div class="mx-auto mb-3 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-3" style="width: 100px; height: 100px;">
+                DA
+              </div>
+              <h4 class="fw-bold mb-1">Dr. David Attah</h4>
+              <p class="text-success small fw-bold">Chief Technical Advisor, Zeus Atlas Ltd</p>
+              <p class="text-muted small">Over 12 years of experience leading tech transformation projects across West Africa. He is an expert in cloud architecture and enterprise systems.</p>
+              <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="https://linkedin.com" target="_blank" class="btn btn-light btn-sm"><i class="fa-brands fa-linkedin text-primary"></i> LinkedIn</a>
+                <a href="mailto:info@zeusatlas.com" class="btn btn-light btn-sm"><i class="fa-solid fa-envelope"></i> Email</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card text-center p-4">
+              <div class="mx-auto mb-3 bg-success text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-3" style="width: 100px; height: 100px;">
+                FO
+              </div>
+              <h4 class="fw-bold mb-1">Dr. Florence Osei</h4>
+              <p class="text-success small fw-bold">Director of Contemporary Agronomy</p>
+              <p class="text-muted small">Specialist in sustainable farming practices and greenhouse crop management. She has trained over 2,500 rural youths in organic agriculture methods.</p>
+              <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="https://linkedin.com" target="_blank" class="btn btn-light btn-sm"><i class="fa-brands fa-linkedin text-primary"></i> LinkedIn</a>
+                <a href="mailto:info@zeusatlas.com" class="btn btn-light btn-sm"><i class="fa-solid fa-envelope"></i> Email</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card text-center p-4">
+              <div class="mx-auto mb-3 bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center fw-bold fs-3" style="width: 100px; height: 100px;">
+                JN
+              </div>
+              <h4 class="fw-bold mb-1">Justice Nana Mensah</h4>
+              <p class="text-success small fw-bold">Lead Lecturer in Public Policy &amp; Law</p>
+              <p class="text-muted small">An authority on Ghanaian constitutional law, employment agreements, and modern data-protection principles for tech startups.</p>
+              <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="https://linkedin.com" target="_blank" class="btn btn-light btn-sm"><i class="fa-brands fa-linkedin text-primary"></i> LinkedIn</a>
+                <a href="mailto:info@zeusatlas.com" class="btn btn-light btn-sm"><i class="fa-solid fa-envelope"></i> Email</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card text-center p-4">
+              <div class="mx-auto mb-3 bg-info text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-3" style="width: 100px; height: 100px;">
+                SA
+              </div>
+              <h4 class="fw-bold mb-1">Sandra Amankwah</h4>
+              <p class="text-success small fw-bold">Senior Agile Project Facilitator</p>
+              <p class="text-muted small">A certified Scrum Master with extensive experience in international logistics, risk analysis, and team performance.</p>
+              <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="https://linkedin.com" target="_blank" class="btn btn-light btn-sm"><i class="fa-brands fa-linkedin text-primary"></i> LinkedIn</a>
+                <a href="mailto:info@zeusatlas.com" class="btn btn-light btn-sm"><i class="fa-solid fa-envelope"></i> Email</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card text-center p-4">
+              <div class="mx-auto mb-3 bg-dark text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-3" style="width: 100px; height: 100px;">
+                EA
+              </div>
+              <h4 class="fw-bold mb-1">Emmanuel Appiah</h4>
+              <p class="text-success small fw-bold">International Admissions Advisor</p>
+              <p class="text-muted small">Expert in overseas educational applications, scholarship statement writing, and visa interview preparation protocols.</p>
+              <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="https://linkedin.com" target="_blank" class="btn btn-light btn-sm"><i class="fa-brands fa-linkedin text-primary"></i> LinkedIn</a>
+                <a href="mailto:info@zeusatlas.com" class="btn btn-light btn-sm"><i class="fa-solid fa-envelope"></i> Email</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card custom-card text-center p-4">
+              <div class="mx-auto mb-3 bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-3" style="width: 100px; height: 100px;">
+                MB
+              </div>
+              <h4 class="fw-bold mb-1">Mavis Boakye</h4>
+              <p class="text-success small fw-bold">Agri-tech Operations Lead</p>
+              <p class="text-muted small">Specializes in modern greenhouse designs and drone mapping. She ensures practical sessions offer direct, hands-on field experience.</p>
+              <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="https://linkedin.com" target="_blank" class="btn btn-light btn-sm"><i class="fa-brands fa-linkedin text-primary"></i> LinkedIn</a>
+                <a href="mailto:info@zeusatlas.com" class="btn btn-light btn-sm"><i class="fa-solid fa-envelope"></i> Email</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 7. CONTACT TAB -->
+  <div id="tab-contact" class="page-tab">
+    <div class="bg-primary text-white text-center py-5">
+      <div class="container">
+        <h1 class="fw-bold mb-2">Connect with Our Team</h1>
+        <p class="lead text-white-50">Got questions? We're here to help you every step of the way.</p>
+      </div>
+    </div>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="card custom-card p-4 h-100">
+              <h3 class="fw-bold text-dark mb-4">Send Us a Message</h3>
+              
+              <div id="contact-success" class="alert alert-success d-none" role="alert">
+                <i class="fa-solid fa-circle-check me-2"></i> Thank you! Your query has been successfully received. We will contact you soon.
+              </div>
+
+              <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Your Name</label>
+                  <input type="text" class="form-control" placeholder="Kwame Mensah" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Email Address</label>
+                  <input type="email" class="form-control" placeholder="kwame@example.com" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Your Subject</label>
+                  <input type="text" class="form-control" placeholder="Inquiry about contemporary agri-tech batch schedule" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Message Body</label>
+                  <textarea class="form-control" rows="5" placeholder="Write your details here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-full py-2.5">
+                  <i class="fa-solid fa-paper-plane me-2"></i>Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card custom-card p-4 bg-dark text-white h-100 d-flex flex-column justify-content-between">
+              <div>
+                <h3 class="fw-bold text-white mb-4">Contact Information</h3>
+                <div class="d-flex align-items-start mb-4">
+                  <i class="fa-solid fa-location-dot text-success fa-lg mt-1 me-3"></i>
+                  <div>
+                    <h6 class="fw-bold text-white mb-1">Our Offices</h6>
+                    <p class="text-white-50 small mb-0">NASPA Secretariat, National Service Authority Headquarters, Accra, Ghana</p>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start mb-4">
+                  <i class="fa-solid fa-envelope text-success fa-lg mt-1 me-3"></i>
+                  <div>
+                    <h6 class="fw-bold text-white mb-1">Email Queries</h6>
+                    <p class="text-white-50 small mb-0">training@naspa.org.gh / contact@zeusatlas.com</p>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start mb-4">
+                  <i class="fa-solid fa-phone text-success fa-lg mt-1 me-3"></i>
+                  <div>
+                    <h6 class="fw-bold text-white mb-1">Call Centre Helpline</h6>
+                    <p class="text-white-50 small mb-0">+233 30 200 0000 / +233 55 123 4567</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Map Placeholder -->
+              <div class="rounded-3 overflow-hidden bg-secondary mt-3" style="height: 180px; position: relative;">
+                <div class="w-100 h-100 bg-secondary d-flex flex-column align-items-center justify-content-center text-center p-3">
+                  <i class="fa-solid fa-map-location-dot fa-2x mb-2 text-white-50"></i>
+                  <span class="fw-bold text-white">Accra, Greater Accra Region</span>
+                  <small class="text-white-50">Interactive Location Map</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 8. REGISTRATION TAB (MOST IMPORTANT INTERFACE) -->
+  <div id="tab-register" class="page-tab">
+    <div class="bg-primary text-white text-center py-5">
+      <div class="container">
+        <h1 class="fw-bold mb-2">Participant Enrollment Form</h1>
+        <p class="lead text-white-50">Secure your fully sponsored seat in the NASPA Skills Training Program.</p>
+      </div>
+    </div>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card custom-card p-4 p-md-5">
+              
+              <div class="text-center mb-4">
+                <i class="fa-solid fa-user-shield text-success fa-3x mb-3"></i>
+                <h3 class="fw-bold">Apply Now</h3>
+                <p class="text-muted small">Please fill out all details accurately. Your NSS Number will be validated automatically.</p>
+              </div>
+
+              <!-- Success Alert Card -->
+              <div id="reg-success-card" class="alert alert-success d-none p-4 rounded-3 text-center" role="alert">
+                <i class="fa-solid fa-circle-check fa-3x mb-3 text-success"></i>
+                <h4 class="fw-bold text-success">Registration Successful!</h4>
+                <p class="mb-3">Your placement is now locked for the current training cycle.</p>
+                <div class="p-3 bg-white border rounded-3 d-inline-block text-start mb-3">
+                  <p class="mb-1 text-muted small">Your Registration ID:</p>
+                  <h4 class="fw-mono fw-bold text-primary mb-0" id="reg-id-display">NSP-48D39A-2026</h4>
+                </div>
+                <p class="small text-muted mb-0">We have sent confirmation instructions to your email. Please present your Registration ID during orientation.</p>
+              </div>
+
+              <form id="registrationForm" onsubmit="handleRegistrationSubmit(event)">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Full Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="reg-fullname" placeholder="John Doe" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">NSS Identification Number <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="reg-nss" placeholder="NSSGP12345626" required>
+                    <div class="form-text small text-muted">Example format: NSSGP12345626</div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Primary Contact Number <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <span class="input-group-text">+233</span>
+                      <input type="tel" class="form-control" id="reg-phone" placeholder="241234567" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="reg-email" placeholder="john.doe@example.com" required>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Region of Service Posting <span class="text-danger">*</span></label>
+                    <select class="form-select" id="reg-region" required>
+                      <option value="">Choose region...</option>
+                      <option value="Greater Accra">Greater Accra</option>
+                      <option value="Ashanti">Ashanti</option>
+                      <option value="Western">Western</option>
+                      <option value="Central">Central</option>
+                      <option value="Eastern">Eastern</option>
+                      <option value="Northern">Northern</option>
+                      <option value="Volta">Volta</option>
+                      <option value="Bono">Bono</option>
+                      <option value="Bono East">Bono East</option>
+                      <option value="Ahafo">Ahafo</option>
+                      <option value="Savannah">Savannah</option>
+                      <option value="North East">North East</option>
+                      <option value="Upper East">Upper East</option>
+                      <option value="Upper West">Upper West</option>
+                      <option value="Oti">Oti</option>
+                      <option value="Western North">Western North</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">District of Service <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="reg-district" placeholder="Accra Metropolitan District" required>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Select Your Desired Pathway <span class="text-danger">*</span></label>
+                    <select class="form-select" id="reg-course" required>
+                      <option value="">Choose course pathway...</option>
+                      <option value="Essential IT &amp; Tech Skills">Essential IT &amp; Tech Skills</option>
+                      <option value="Basic Laws of Ghana">Basic Laws of Ghana</option>
+                      <option value="Agile Project Management">Agile Project Management</option>
+                      <option value="Contemporary Agriculture">Contemporary Agriculture</option>
+                      <option value="Study Abroad Facilitation">Study Abroad Facilitation</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Gender Identity <span class="text-danger">*</span></label>
+                    <select class="form-select" id="reg-gender" required>
+                      <option value="">Choose...</option>
+                      <option value="Female">Female</option>
+                      <option value="Male">Male</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-check mb-4 mt-2">
+                  <input class="form-check-input" type="checkbox" id="reg-agree" required>
+                  <label class="form-check-label text-muted small" for="reg-agree">
+                    I confirm that I am an active Ghanaian National Service Person. I agree to the <a href="#" onclick="switchTab('terms')">Terms &amp; Conditions</a> and <a href="#" onclick="switchTab('privacy')">Privacy Policy</a> of the program.
+                  </label>
+                </div>
+
+                <div id="validation-error-alert" class="alert alert-danger d-none" role="alert">
+                  <i class="fa-solid fa-triangle-exclamation me-2"></i> <span id="error-alert-text">Error validation text.</span>
+                </div>
+
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-success btn-lg py-3 rounded-3 fw-bold">
+                    <i class="fa-solid fa-circle-check me-2"></i>Submit Official Application
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 9. ADMIN DASHBOARD TAB -->
+  <div id="tab-dashboard" class="page-tab">
+    <div class="bg-dark text-white py-4">
+      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+        <div>
+          <span class="badge bg-danger text-white rounded-pill mb-1">SECURE PORTAL</span>
+          <h1 class="fw-bold mb-0">Staff Administration Dashboard</h1>
+        </div>
+        <div class="mt-3 mt-md-0 d-flex gap-2">
+          <button onclick="exportToCSV()" class="btn btn-outline-light btn-sm px-3 py-2"><i class="fa-solid fa-file-export me-2"></i>Export as CSV</button>
+          <button onclick="resetSimulatedDatabase()" class="btn btn-outline-danger btn-sm px-3 py-2"><i class="fa-solid fa-trash me-2"></i>Clear Records</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics Cards -->
+    <section class="py-4">
+      <div class="container">
+        <div class="row g-4 text-center">
+          <div class="col-md-3">
+            <div class="card custom-card p-3 border-start border-primary border-5">
+              <span class="text-muted small fw-semibold">TOTAL APPLICANTS</span>
+              <h2 class="fw-extrabold text-primary mb-0 mt-1" id="dash-total">0</h2>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card custom-card p-3 border-start border-success border-5">
+              <span class="text-muted small fw-semibold">AGRI-TECH TRACK</span>
+              <h2 class="fw-extrabold text-success mb-0 mt-1" id="dash-agri">0</h2>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card custom-card p-3 border-start border-warning border-5">
+              <span class="text-muted small fw-semibold">IT &amp; TECH TRACK</span>
+              <h2 class="fw-extrabold text-warning mb-0 mt-1" id="dash-tech">0</h2>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card custom-card p-3 border-start border-info border-5">
+              <span class="text-muted small fw-semibold">FEMALE RATIO</span>
+              <h2 class="fw-extrabold text-info mb-0 mt-1" id="dash-female">0%</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters and Table -->
+    <section class="pb-5">
+      <div class="container">
+        <div class="card custom-card p-4">
+          <div class="row g-3 mb-4 justify-content-between align-items-center">
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                <input type="text" id="admin-search" onkeyup="renderAdminTable()" class="form-control border-start-0" placeholder="Search by name, NSS, email...">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <select id="admin-filter-course" onchange="renderAdminTable()" class="form-select">
+                <option value="all">All Course Tracks</option>
+                <option value="Essential IT &amp; Tech Skills">Essential IT &amp; Tech Skills</option>
+                <option value="Basic Laws of Ghana">Basic Laws of Ghana</option>
+                <option value="Agile Project Management">Agile Project Management</option>
+                <option value="Contemporary Agriculture">Contemporary Agriculture</option>
+                <option value="Study Abroad Facilitation">Study Abroad Facilitation</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Reg ID</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">NSS Number</th>
+                  <th scope="col">Region / District</th>
+                  <th scope="col">Selected Course</th>
+                  <th scope="col">Gender</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-table-body">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 10. PRIVACY POLICY TAB -->
+  <div id="tab-privacy" class="page-tab">
+    <div class="bg-primary text-white text-center py-5">
+      <div class="container">
+        <h1 class="fw-bold mb-2">Privacy Policy</h1>
+        <p class="lead text-white-50">How we handle your information</p>
+      </div>
+    </div>
+    <section class="py-5">
+      <div class="container">
+        <div class="card custom-card p-4 p-md-5">
+          <h3 class="fw-bold text-dark mb-4">1. Information We Collect</h3>
+          <p class="text-muted">We collect personal data like your name, National Service Scheme (NSS) registration number, primary telephone contact, email address, and service deployment details when you apply to the NASPA Skills Training Program.</p>
+          
+          <h3 class="fw-bold text-dark mb-4 mt-5">2. How We Use Your Data</h3>
+          <p class="text-muted">This information is used strictly to verify your national service status, schedule your training sessions, provide communications from instructors, and issue certificates of completion.</p>
+
+          <h3 class="fw-bold text-dark mb-4 mt-5">3. Third-Party Sharing</h3>
+          <p class="text-muted">Your personal data is never sold or shared with third parties for commercial use. Information is only shared between NASPA Ghana and Zeus Atlas Limited to support your participation in the program.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 11. TERMS AND CONDITIONS TAB -->
+  <div id="tab-terms" class="page-tab">
+    <div class="bg-primary text-white text-center py-5">
+      <div class="container">
+        <h1 class="fw-bold mb-2">Terms &amp; Conditions</h1>
+        <p class="lead text-white-50">Program Guidelines &amp; Participation Rules</p>
+      </div>
+    </div>
+    <section class="py-5">
+      <div class="container">
+        <div class="card custom-card p-4 p-md-5">
+          <h3 class="fw-bold text-dark mb-4">1. Eligibility Criteria</h3>
+          <p class="text-muted">Applicants must be currently serving National Service Personnel in Ghana with a valid NSS Number. Providing inaccurate details may result in removal from the program.</p>
+          
+          <h3 class="fw-bold text-dark mb-4 mt-5">2. Attendance Policy</h3>
+          <p class="text-muted">To receive a certificate of completion, participants must attend at least 80% of live classes, complete practical assignments, and pass final competency tests.</p>
+
+          <h3 class="fw-bold text-dark mb-4 mt-5">3. Intellectual Property</h3>
+          <p class="text-muted">All learning resources, software tool instructions, data simulators, and Agri-tech guides are the shared intellectual property of Zeus Atlas and NASPA Ghana. Distributing materials commercially is strictly prohibited.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ======================== FOOTER & OVERLAY WIDGETS ======================== -->
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-12">
+          <h4 class="fw-bold text-primary mb-3">NASPA Training Program</h4>
+          <p class="text-white-50 small mb-4">An official partnership between the National Service Personnel Association (NASPA) Ghana and Zeus Atlas Limited, designed to address youth unemployment through structured training.</p>
+          <div class="d-flex gap-3">
+            <a href="https://facebook.com" target="_blank" class="text-white-50 hover-text-white"><i class="fa-brands fa-facebook fa-xl"></i></a>
+            <a href="https://twitter.com" target="_blank" class="text-white-50 hover-text-white"><i class="fa-brands fa-x-twitter fa-xl"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="text-white-50 hover-text-white"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+            <a href="https://instagram.com" target="_blank" class="text-white-50 hover-text-white"><i class="fa-brands fa-instagram fa-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4">
+          <h5 class="fw-bold text-white mb-3">Quick Navigation</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" onclick="switchTab('home')" class="text-white-50 text-decoration-none small">Home</a></li>
+            <li class="mb-2"><a href="#" onclick="switchTab('about')" class="text-white-50 text-decoration-none small">About Us</a></li>
+            <li class="mb-2"><a href="#" onclick="switchTab('courses')" class="text-white-50 text-decoration-none small">Courses</a></li>
+            <li class="mb-2"><a href="#" onclick="switchTab('agritech')" class="text-white-50 text-decoration-none small">Agri-Tech</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-4">
+          <h5 class="fw-bold text-white mb-3">Resources</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" onclick="switchTab('gallery')" class="text-white-50 text-decoration-none small">Gallery</a></li>
+            <li class="mb-2"><a href="#" onclick="switchTab('instructors')" class="text-white-50 text-decoration-none small">Facilitators</a></li>
+            <li class="mb-2"><a href="#" onclick="switchTab('privacy')" class="text-white-50 text-decoration-none small">Privacy Policy</a></li>
+            <li class="mb-2"><a href="#" onclick="switchTab('terms')" class="text-white-50 text-decoration-none small">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-4">
+          <h5 class="fw-bold text-white mb-3">Newsletter Subscription</h5>
+          <p class="text-white-50 small">Receive updates on schedule changes and new training courses.</p>
+          
+          <div id="newsletter-success" class="alert alert-success d-none py-2 px-3 small" role="alert">
+            Subscribed successfully!
+          </div>
+
+          <form id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
+            <div class="input-group">
+              <input type="email" class="form-control" placeholder="yourname@gmail.com" required>
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-4">
+
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start small text-white-50">
+          &copy; 2026 NASPA Ghana &amp; Zeus Atlas Limited. All rights reserved.
+        </div>
+        <div class="col-md-6 text-center text-md-end small text-white-50 mt-2 mt-md-0">
+          Partnered with Ghana National Service Authority (NSA)
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL FOR GALLERY PREVIEW -->
+  <div class="modal fade lightbox-modal" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content text-end">
+        <button type="button" class="btn-close btn-close-white ms-auto mb-2" data-bs-dismiss="modal" aria-label="Close"></button>
+        <img id="lightbox-modal-img" src="" class="img-fluid rounded-3 lightbox-img w-100" alt="Detailed Preview">
+      </div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP WIDGET -->
+  <div class="whatsapp-widget" onclick="openWhatsAppChat()">
+    <i class="fa-brands fa-whatsapp"></i>
+  </div>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="backToTop" class="back-to-top" onclick="scrollToTop()">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+
+  <!-- ======================== JAVASCRIPT LOGIC ENGINE ======================== -->
+
+  <!-- Bootstrap 5 Bundle JS with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // ------------------ SAMPLE INITIAL SEED DATA ------------------
+    const defaultParticipants = [
+      { id: "NSP-B9A23E-2026", name: "Ebenezer Mensah", nss: "NSSGP29384726", phone: "244837261", email: "ebenezer.mensah@gmail.com", region: "Greater Accra", district: "Tema West District", course: "Essential IT & Tech Skills", gender: "Male" },
+      { id: "NSP-F2C84D-2026", name: "Abigail Awuni", nss: "NSSGP10293826", phone: "558293847", email: "abigail.awuni@yahoo.com", region: "Northern", district: "Tamale Metropolitan", course: "Contemporary Agriculture", gender: "Female" },
+      { id: "NSP-3C9A12-2026", name: "Prince Osei Tutu", nss: "NSSGP84736226", phone: "201928374", email: "prince.tutu@gmail.com", region: "Ashanti", district: "Kumasi Metropolitan", course: "Agile Project Management", gender: "Male" },
+      { id: "NSP-5E3D21-2026", name: "Comfort Boateng", nss: "NSSGP47362126", phone: "243948576", email: "comfort.boateng@gmail.com", region: "Eastern", district: "New Juaben North", course: "Study Abroad Facilitation", gender: "Female" },
+      { id: "NSP-7A8B9C-2026", name: "Belinda Darko", nss: "NSSGP38475626", phone: "504837261", email: "belinda.darko@gmail.com", region: "Greater Accra", district: "Ayawaso West Municipal", course: "Essential IT & Tech Skills", gender: "Female" }
+    ];
+
+    // Seed database if empty
+    if (!localStorage.getItem('naspa_participants')) {
+      localStorage.setItem('naspa_participants', JSON.stringify(defaultParticipants));
+    }
+
+    // ------------------ TAB NAVIGATION ROUTER ------------------
+    function switchTab(tabId) {
+      // Deactivate all sections & navigation links
+      document.querySelectorAll('.page-tab').forEach(tab => {
+        tab.classList.remove('active-tab');
+      });
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+
+      // Activate selected section
+      const targetTab = document.getElementById('tab-' + tabId);
+      if (targetTab) {
+        targetTab.classList.add('active-tab');
+      }
+
+      // Activate navbar highlight
+      const targetLink = document.getElementById('nav-' + tabId);
+      if (targetLink) {
+        targetLink.classList.add('active');
+      }
+
+      // Scroll to top
+      window.scrollTo(0, 0);
+
+      // Refresh data if opening admin dashboard
+      if (tabId === 'dashboard') {
+        renderAdminTable();
+      }
+
+      // Update browser URL hash quietly
+      history.pushState(null, null, '#' + tabId);
+    }
+
+    // Direct course enrollment button helper
+    function enrollCourse(courseName) {
+      switchTab('register');
+      document.getElementById('reg-course').value = courseName;
+    }
+
+    // ------------------ REGISTRATION SYSTEM ------------------
+    function handleRegistrationSubmit(event) {
+      event.preventDefault();
+
+      // Get values
+      const fullname = document.getElementById('reg-fullname').value.trim();
+      const nss = document.getElementById('reg-nss').value.trim().toUpperCase();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const region = document.getElementById('reg-region').value;
+      const district = document.getElementById('reg-district').value.trim();
+      const course = document.getElementById('reg-course').value;
+      const gender = document.getElementById('reg-gender').value;
+
+      // Validation alerts container
+      const errorAlert = document.getElementById('validation-error-alert');
+      const errorText = document.getElementById('error-alert-text');
+      errorAlert.classList.add('d-none');
+
+      // 1. NSS Number Validation Rule: e.g. NSSGP12345626 (or matching standard Ghanaian pattern starting with NSS)
+      const nssPattern = /^NSS[A-Z0-9]{9,12}$/;
+      if (!nssPattern.test(nss)) {
+        errorText.innerText = "Invalid NSS Identification Number. Please enter a valid registration ID, such as NSSGP12345626.";
+        errorAlert.classList.remove('d-none');
+        return;
+      }
+
+      // 2. Phone Number Format (allow 7 to 10 digits post country code)
+      const phonePattern = /^[0-9]{9,10}$/;
+      if (!phonePattern.test(phone)) {
+        errorText.innerText = "Invalid primary telephone contact. Please enter a 9 or 10-digit number (e.g. 241234567).";
+        errorAlert.classList.remove('d-none');
+        return;
+      }
+
+      // 3. Email Format
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(email)) {
+        errorText.innerText = "Invalid email formatting. Please provide a functional email address.";
+        errorAlert.classList.remove('d-none');
+        return;
+      }
+
+      // Create cryptographically styled unique Reg ID
+      const randomHex = Math.random().toString(16).substring(2, 8).toUpperCase();
+      const registrationID = `NSP-${randomHex}-2026`;
+
+      // Read current records
+      const participants = JSON.parse(localStorage.getItem('naspa_participants')) || [];
+
+      // Duplicate Check
+      if (participants.some(p => p.nss === nss)) {
+        errorText.innerText = "A participant with this NSS Number is already registered in the program database.";
+        errorAlert.classList.remove('d-none');
+        return;
+      }
+
+      // Build data record
+      const newParticipant = {
+        id: registrationID,
+        name: fullname,
+        nss: nss,
+        phone: phone,
+        email: email,
+        region: region,
+        district: district,
+        course: course,
+        gender: gender
+      };
+
+      // Save to localStorage
+      participants.push(newParticipant);
+      localStorage.setItem('naspa_participants', JSON.stringify(participants));
+
+      // Reset form controls & present success view
+      document.getElementById('registrationForm').reset();
+      document.getElementById('reg-id-display').innerText = registrationID;
+      document.getElementById('reg-success-card').classList.remove('d-none');
+      document.getElementById('registrationForm').classList.add('d-none');
+    }
+
+    // ------------------ ADMIN PORTAL TABLE ENGINE ------------------
+    function renderAdminTable() {
+      const searchVal = document.getElementById('admin-search').value.toLowerCase();
+      const courseFilter = document.getElementById('admin-filter-course').value;
+      const tableBody = document.getElementById('admin-table-body');
+      
+      const participants = JSON.parse(localStorage.getItem('naspa_participants')) || [];
+
+      tableBody.innerHTML = '';
+
+      let totalCount = 0;
+      let agriCount = 0;
+      let techCount = 0;
+      let femaleCount = 0;
+
+      participants.forEach((item) => {
+        // Collect Global Analytics Values
+        totalCount++;
+        if (item.course === "Contemporary Agriculture") agriCount++;
+        if (item.course === "Essential IT & Tech Skills") techCount++;
+        if (item.gender === "Female") femaleCount++;
+
+        // Apply filters
+        const matchesSearch = item.name.toLowerCase().includes(searchVal) || 
+                              item.nss.toLowerCase().includes(searchVal) || 
+                              item.email.toLowerCase().includes(searchVal) ||
+                              item.id.toLowerCase().includes(searchVal);
+        
+        const matchesCourse = (courseFilter === 'all') || (item.course === courseFilter);
+
+        if (matchesSearch && matchesCourse) {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><span class="badge bg-secondary font-monospace">${item.id}</span></td>
+            <td><strong>${item.name}</strong></td>
+            <td>${item.nss}</td>
+            <td><small class="d-block">${item.region}</small><small class="text-muted">${item.district}</small></td>
+            <td><span class="badge ${item.course === 'Contemporary Agriculture' ? 'bg-success' : 'bg-primary'}">${item.course}</span></td>
+            <td>${item.gender}</td>
+            <td>
+              <button onclick="deleteParticipant('${item.id}')" class="btn btn-outline-danger btn-sm rounded-circle" title="Remove Entry">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </td>
+          `;
+          tableBody.appendChild(row);
+        }
+      });
+
+      // Update counters in Dashboard view
+      document.getElementById('dash-total').innerText = totalCount;
+      document.getElementById('dash-agri').innerText = agriCount;
+      document.getElementById('dash-tech').innerText = techCount;
+      const femaleRatio = totalCount > 0 ? Math.round((femaleCount / totalCount) * 100) : 0;
+      document.getElementById('dash-female').innerText = femaleRatio + "%";
+    }
+
+    function deleteParticipant(id) {
+      if (confirm("Are you sure you want to remove this participant's registration data from storage?")) {
+        let participants = JSON.parse(localStorage.getItem('naspa_participants')) || [];
+        participants = participants.filter(item => item.id !== id);
+        localStorage.setItem('naspa_participants', JSON.stringify(participants));
+        renderAdminTable();
+      }
+    }
+
+    function resetSimulatedDatabase() {
+      if (confirm("Reset to default sample data? This will clear all newly added records.")) {
+        localStorage.setItem('naspa_participants', JSON.stringify(defaultParticipants));
+        renderAdminTable();
+      }
+    }
+
+    // Simple Client-Side CSV Exporter
+    function exportToCSV() {
+      const participants = JSON.parse(localStorage.getItem('naspa_participants')) || [];
+      if (participants.length === 0) {
+        alert("No registration records available to export.");
+        return;
+      }
+
+      let csvContent = "data:text/csv;charset=utf-8,Registration ID,Full Name,NSS Number,Phone,Email,Region,District,Course Pathway,Gender\n";
+      
+      participants.forEach(p => {
+        const row = [p.id, p.name, p.nss, p.phone, p.email, p.region, p.district, p.course, p.gender]
+          .map(val => `"${val.replace(/"/g, '""')}"`)
+          .join(",");
+        csvContent += row + "\n";
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "NASPA_Training_Registrations_2026.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // ------------------ LIVE SENSOR SIMULATOR ------------------
+    function refreshSensors() {
+      const moisture = (Math.random() * 15 + 40).toFixed(1); // 40% - 55%
+      const temp = (Math.random() * 6 + 26).toFixed(1); // 26C - 32C
+      const nitrogen = Math.floor(Math.random() * 30 + 130); // 130ppm - 160ppm
+
+      document.getElementById('sensor-moisture').innerText = moisture + "%";
+      document.getElementById('sensor-temp').innerText = temp + "°C";
+      document.getElementById('sensor-nitrogen').innerText = nitrogen + " ppm";
+    }
+
+    // ------------------ GALLERY FILTER & LIGHTBOX ------------------
+    function filterGallery(category) {
+      // Toggle button highlights
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // Filter gallery cards
+      document.querySelectorAll('.gallery-card-item').forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function openLightbox(imgSrc) {
+      const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+      document.getElementById('lightbox-modal-img').src = imgSrc;
+      lightboxModal.show();
+    }
+
+    // ------------------ OTHER FORMS & UI FLOWS ------------------
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      document.getElementById('contactForm').reset();
+      const successMsg = document.getElementById('contact-success');
+      successMsg.classList.remove('d-none');
+      setTimeout(() => successMsg.classList.add('d-none'), 6000);
+    }
+
+    function handleNewsletterSubmit(event) {
+      event.preventDefault();
+      document.getElementById('newsletterForm').reset();
+      const successMsg = document.getElementById('newsletter-success');
+      successMsg.classList.remove('d-none');
+      setTimeout(() => successMsg.classList.add('d-none'), 5000);
+    }
+
+    function openWhatsAppChat() {
+      // Direct WhatsApp API link referencing our official support channel
+      const textMessage = encodeURIComponent("Hello NASPA Ghana! I would like to inquire about the current Skills Training Program batches.");
+      window.open(`https://wa.me/233551234567?text=${textMessage}`, '_blank');
+    }
+
+    // ------------------ HELPFUL UX BEHAVIORS ------------------
+    // Back to top logic
+    const bttButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        bttButton.classList.add('show');
+      } else {
+        bttButton.classList.remove('show');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Seed interactive counts periodically
+    setInterval(() => {
+      const liveCounter = document.getElementById('live-count');
+      if (liveCounter) {
+        const currentVal = parseInt(liveCounter.innerText.replace(/,/g, ''));
+        if (Math.random() > 0.5) {
+          const updatedVal = (currentVal + Math.floor(Math.random() * 3) + 1).toLocaleString();
+          liveCounter.innerText = updatedVal;
+        }
+      }
+    }, 8000);
+
+    // Watch navigation anchors for direct link hashing
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentHash = window.location.hash.substring(1);
+      if (currentHash && ['home', 'about', 'courses', 'agritech', 'gallery', 'instructors', 'contact', 'register', 'dashboard', 'privacy', 'terms'].includes(currentHash)) {
+        switchTab(currentHash);
+      } else {
+        switchTab('home');
+      }
+      refreshSensors();
+    });
+  </script>
+</body>
+</html>
