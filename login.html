@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; background: #f4f7f6;">
+
+  <div style="text-align: center; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <h2>NASPA Management Portal</h2>
+    <p>Please log in to access the administrator dashboard.</p>
+    <div data-netlify-identity-button style="margin-top: 20px;"></div>
+  </div>
+
+  <script>
+    window.netlifyIdentity.on('login', () => {
+      window.location.href = '/admin/';
+    });
+  </script>
+</body>
+</html>
