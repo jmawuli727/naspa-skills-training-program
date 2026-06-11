@@ -266,8 +266,8 @@
           <li class="nav-item"><a class="nav-link px-3" id="nav-instructors" href="#" onclick="switchTab('instructors')">Facilitators</a></li>
           <li class="nav-item"><a class="nav-link px-3" id="nav-contact" href="#" onclick="switchTab('contact')">Contact</a></li>
           <li class="nav-item ms-lg-2">
-            <a class="btn btn-outline-primary rounded-pill px-3 py-1.5 mt-2 mt-lg-0 me-2" id="nav-dashboard" href="#" onclick="switchTab('dashboard')">
-              <i class="fa-solid fa-chart-line me-1"></i> Admin Portal
+          <a class="btn btn-outline-primary rounded-pill px-3 py-1.5 mt-2 mt-lg-0 me-2" id="nav-dashboard" href="/login.html">
+  <i class="fa-solid fa-chart-line me-1"></i> Admin Portal
             </a>
           </li>
           <li class="nav-item">
@@ -1369,100 +1369,6 @@
                 </div>
               </form>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-
-  <!-- 9. ADMIN DASHBOARD TAB -->
-  <div id="tab-dashboard" class="page-tab">
-    <div class="bg-dark text-white py-4">
-      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-        <div>
-          <span class="badge bg-danger text-white rounded-pill mb-1">SECURE PORTAL</span>
-          <h1 class="fw-bold mb-0">Staff Administration Dashboard</h1>
-        </div>
-        <div class="mt-3 mt-md-0 d-flex gap-2">
-          <button onclick="exportToCSV()" class="btn btn-outline-light btn-sm px-3 py-2"><i class="fa-solid fa-file-export me-2"></i>Export as CSV</button>
-          <button onclick="resetSimulatedDatabase()" class="btn btn-outline-danger btn-sm px-3 py-2"><i class="fa-solid fa-trash me-2"></i>Clear Records</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Analytics Cards -->
-    <section class="py-4">
-      <div class="container">
-        <div class="row g-4 text-center">
-          <div class="col-md-3">
-            <div class="card custom-card p-3 border-start border-primary border-5">
-              <span class="text-muted small fw-semibold">TOTAL APPLICANTS</span>
-              <h2 class="fw-extrabold text-primary mb-0 mt-1" id="dash-total">0</h2>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card custom-card p-3 border-start border-success border-5">
-              <span class="text-muted small fw-semibold">AGRI-TECH TRACK</span>
-              <h2 class="fw-extrabold text-success mb-0 mt-1" id="dash-agri">0</h2>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card custom-card p-3 border-start border-warning border-5">
-              <span class="text-muted small fw-semibold">IT &amp; TECH TRACK</span>
-              <h2 class="fw-extrabold text-warning mb-0 mt-1" id="dash-tech">0</h2>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card custom-card p-3 border-start border-info border-5">
-              <span class="text-muted small fw-semibold">FEMALE RATIO</span>
-              <h2 class="fw-extrabold text-info mb-0 mt-1" id="dash-female">0%</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Filters and Table -->
-    <section class="pb-5">
-      <div class="container">
-        <div class="card custom-card p-4">
-          <div class="row g-3 mb-4 justify-content-between align-items-center">
-            <div class="col-md-4">
-              <div class="input-group">
-                <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
-                <input type="text" id="admin-search" onkeyup="renderAdminTable()" class="form-control border-start-0" placeholder="Search by name, NSS, email...">
-              </div>
-            </div>
-            <div class="col-md-4">
-              <select id="admin-filter-course" onchange="renderAdminTable()" class="form-select">
-                <option value="all">All Course Tracks</option>
-                <option value="Essential IT &amp; Tech Skills">Essential IT &amp; Tech Skills</option>
-                <option value="Basic Laws of Ghana">Basic Laws of Ghana</option>
-                <option value="Agile Project Management">Agile Project Management</option>
-                <option value="Contemporary Agriculture">Contemporary Agriculture</option>
-                <option value="Study Abroad Facilitation">Study Abroad Facilitation</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="table-responsive">
-            <table class="table table-hover align-middle">
-              <thead class="table-light">
-                <tr>
-                  <th scope="col">Reg ID</th>
-                  <th scope="col">Full Name</th>
-                  <th scope="col">NSS Number</th>
-                  <th scope="col">Region / District</th>
-                  <th scope="col">Selected Course</th>
-                  <th scope="col">Gender</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="admin-table-body">
-                <!-- Injected via JS -->
-              </tbody>
-            </table>
           </div>
         </div>
       </div>
